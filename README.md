@@ -7,4 +7,4 @@
 
 [과제 링크](https://github.com/chhw130/Front-Basic-Deep-Dive/tree/main/packages/assignment-1)
 
-[WIKI 링크(궁금증 및 정리)](https://github.com/chhw130/Front-Basic-Deep-Dive/wiki/1%EC%9E%A5-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EA%B0%84%EB%8B%A8-%EA%B8%B0%EB%8A%A5)
+[WIKI 링크(궁금증 및 정리)](https://github.com/chhw130/Front-Basic-Deep-Dive/wiki/1%EC%9E%A5-%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0)
