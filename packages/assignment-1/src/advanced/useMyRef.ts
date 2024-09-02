@@ -1,3 +1,9 @@
+import { useMemo } from "react";
+
 export function useMyRef<T>(initValue: T | null) {
-  return { current: initValue }
+  const value = useMemo(() => {
+    return { current: initValue };
+  }, [initValue]);
+
+  return value;
 }
