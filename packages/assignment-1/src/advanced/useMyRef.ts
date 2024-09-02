@@ -6,4 +6,7 @@ export function useMyRef<T>(initValue: T | null) {
   }, [initValue]);
 
   return value;
+
+  // const [value] = useState({current : initValue})
+  // return value
 }
