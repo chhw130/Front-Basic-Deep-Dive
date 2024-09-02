@@ -130,7 +130,7 @@ describe("다양한 hook을 이용하여 테스트코드를 통과할 수 있도
   });
 
   describe("Props 최적화 >", () => {
-    test.only("useMemo나 useCallback을 사용하지 않고 props를 최적화하여 리렌더링을 방지할 수 있다", () => {
+    test("useMemo나 useCallback을 사용하지 않고 props를 최적화하여 리렌더링을 방지할 수 있다", () => {
       const countRendering = vi.fn();
       const TestComponent = () => {
         const [, rerender] = useState({});
