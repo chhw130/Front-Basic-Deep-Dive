@@ -193,7 +193,7 @@ describe("assignment 2 > basic : 값을 다루기", () => {
       expect(num2 instanceof Number).toBe(false);
     });
 
-    it.only("CustomNumber > ", () => {
+    it("CustomNumber > ", () => {
       const num1 = new CustomNumber(1);
       const num2 = new CustomNumber(2);
       const num3 = new CustomNumber(1);
@@ -230,7 +230,7 @@ describe("assignment 2 > basic : 값을 다루기", () => {
 
     const obj = createUnenumerableObject({ a: 1, b: 2 });
 
-    it("createUnenumerableObject > ", () => {
+    it.only("createUnenumerableObject > ", () => {
       expect(obj.a).toEqual(1);
       expect(obj.b).toEqual(2);
       expect({ ...obj }).toEqual({});

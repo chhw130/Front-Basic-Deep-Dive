@@ -93,7 +93,7 @@ export class CustomNumber {
 }
 
 export function createUnenumerableObject(target) {
-  return target;
+  return Object.create(target, {});
 }
 
 export function forEach(target, callback) {}
