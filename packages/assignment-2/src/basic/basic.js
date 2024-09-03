@@ -45,15 +45,25 @@ export function deepEquals(target1, target2) {
 }
 
 export function createNumber1(n) {
-  return n;
+  return {
+    valueOf: () => n,
+  };
 }
 
 export function createNumber2(n) {
-  return n;
+  return {
+    valueOf: () => `${n}`,
+  };
 }
 
 export function createNumber3(n) {
-  return n;
+  const obj = {
+    valueOf: () => n,
+    toString: () => `${n}`,
+    toJSON: () => `this is createNumber3 => ${n}`,
+  };
+
+  return obj;
 }
 
 export class CustomNumber {}

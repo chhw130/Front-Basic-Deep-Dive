@@ -144,7 +144,7 @@ describe("assignment 2 > basic : 값을 다루기", () => {
   });
 
   describe("number를 다뤄봅시다.", () => {
-    it.only("createNumber1 > ", () => {
+    it("createNumber1 > ", () => {
       const num1 = createNumber1(1);
       const num2 = createNumber1(2);
       expect(num1 + num2).toBe(3);
