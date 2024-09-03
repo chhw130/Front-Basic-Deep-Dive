@@ -15,7 +15,7 @@ import {
 } from "../basic";
 
 describe("assignment 2 > basic : 값을 다루기", () => {
-  describe.only("객체를 다뤄봅시다.", () => {
+  describe("객체를 다뤄봅시다.", () => {
     it("값 비교", () => {
       expect(1 === 1).toBe(true);
       expect(1 === 2).toBe(false);
@@ -144,7 +144,7 @@ describe("assignment 2 > basic : 값을 다루기", () => {
   });
 
   describe("number를 다뤄봅시다.", () => {
-    it("createNumber1 > ", () => {
+    it.only("createNumber1 > ", () => {
       const num1 = createNumber1(1);
       const num2 = createNumber1(2);
       expect(num1 + num2).toBe(3);
