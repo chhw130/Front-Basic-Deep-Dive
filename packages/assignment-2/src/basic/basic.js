@@ -66,7 +66,31 @@ export function createNumber3(n) {
   return obj;
 }
 
-export class CustomNumber {}
+export class CustomNumber {
+  static cache = new Map();
+
+  constructor(n) {
+    if (CustomNumber.cache.get(n)) {
+      return CustomNumber.cache.get(n);
+    }
+
+    CustomNumber.cache.set(n, this);
+
+    this.value = n;
+  }
+
+  valueOf() {
+    return this.value;
+  }
+
+  toString() {
+    return `${this.value}`;
+  }
+
+  toJSON() {
+    return `${this.value}`;
+  }
+}
 
 export function createUnenumerableObject(target) {
   return target;

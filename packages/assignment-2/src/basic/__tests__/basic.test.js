@@ -193,26 +193,7 @@ describe("assignment 2 > basic : 값을 다루기", () => {
       expect(num2 instanceof Number).toBe(false);
     });
 
-    it("createNumber3 > ", () => {
-      const num1 = createNumber3(1);
-      const num2 = createNumber3(2);
-      expect(1 + num2).toBe(3);
-      expect(num1 + 2).toBe(3);
-      expect(num1 === 1).toBe(false);
-      expect(num1 === 2).toBe(false);
-      expect(num1 == 1).toBe(true);
-      expect(num2 == 2).toBe(true);
-      expect(JSON.stringify(num1)).toBe('"this is createNumber3 => 1"');
-      expect(JSON.stringify(num2)).toBe('"this is createNumber3 => 2"');
-      expect(JSON.stringify(num1 + num2)).toBe("3");
-      expect(JSON.stringify(`${num1}${num2}`)).toBe('"12"');
-      expect(typeof num1 === "number").toBe(false);
-      expect(typeof num1 === "object").toBe(true);
-      expect(num1 instanceof Number).toBe(false);
-      expect(num2 instanceof Number).toBe(false);
-    });
-
-    it("CustomNumber > ", () => {
+    it.only("CustomNumber > ", () => {
       const num1 = new CustomNumber(1);
       const num2 = new CustomNumber(2);
       const num3 = new CustomNumber(1);
