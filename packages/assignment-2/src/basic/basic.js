@@ -96,7 +96,18 @@ export function createUnenumerableObject(target) {
   return Object.create(target, {});
 }
 
-export function forEach(target, callback) {}
+export function forEach(target, callback) {
+  const data = Object.entries(Object.getPrototypeOf(target));
+
+  for (let i = 0; i < data.length; i++) {
+    const [a, b] = data[i];
+
+    const key = a;
+    const value = b;
+
+    callback(value, key);
+  }
+}
 
 export function map(target, callback) {}
 

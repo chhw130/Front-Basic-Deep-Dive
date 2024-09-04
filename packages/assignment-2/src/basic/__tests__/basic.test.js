@@ -230,13 +230,13 @@ describe("assignment 2 > basic : 값을 다루기", () => {
 
     const obj = createUnenumerableObject({ a: 1, b: 2 });
 
-    it.only("createUnenumerableObject > ", () => {
+    it("createUnenumerableObject > ", () => {
       expect(obj.a).toEqual(1);
       expect(obj.b).toEqual(2);
       expect({ ...obj }).toEqual({});
     });
 
-    it("forEach > ", () => {
+    it.only("forEach > ", () => {
       const results = [];
       forEach(obj, (value, key) => results.push({ value, key }));
       expect(results).toStrictEqual([
