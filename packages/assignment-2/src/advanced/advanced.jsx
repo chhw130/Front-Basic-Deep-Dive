@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { shallowEquals } from "../basic/basic";
 
 export const memo1 = (() => {
   const cache = new Map();
@@ -29,8 +30,16 @@ export const memo2 = (() => {
   };
 })();
 
-export const useCustomState = (initValue) => {
-  return useState(initValue);
+export const useCustomState = (initialValue) => {
+  const [state, setState] = useState(initialValue);
+
+  const newSetState = (value) => {
+    if (!shallowEquals(state, value)) {
+      return setState(value);
+    }
+  };
+
+  return [state, newSetState];
 };
 
 const textContextDefaultValue = {
