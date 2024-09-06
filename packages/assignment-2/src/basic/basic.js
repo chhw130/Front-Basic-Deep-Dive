@@ -7,7 +7,7 @@ export function shallowEquals(target1, target2) {
 
   if (
     (target1.constructor === Object && target2.constructor === Object) ||
-    (Array.isLikeArray(target1) && Array.isLikeArray(target2))
+    (Array.isArray(target1) && Array.isArray(target2))
   ) {
     return shallowComparisonObj(target1, target2);
   }
@@ -26,7 +26,7 @@ export function deepEquals(target1, target2) {
 
   if (
     (target1.constructor === Object && target2.constructor === Object) ||
-    (Array.isLikeArray(target1) && Array.isLikeArray(target2))
+    (Array.isArray(target1) && Array.isArray(target2))
   ) {
     const keys1 = Object.keys(target1);
     const keys2 = Object.keys(target2);
@@ -153,6 +153,27 @@ export function filter(target, callback) {
   }
 }
 
-export function every(target, callback) {}
+export function every(target, callback) {
+  const isLikeArray = target instanceof Array || target instanceof NodeList;
 
-export function some(target, callback) {}
+  const newTarget = isLikeArray ? Array.from(target) : target;
+
+  for (let item in newTarget) {
+    if (!callback(newTarget[item])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+export function some(target, callback) {
+  const isLikeArray = target instanceof Array || target instanceof NodeList;
+
+  const newTarget = isLikeArray ? Array.from(target) : target;
+
+  for (let item in newTarget) {
+    if (callback(newTarget[item])) {
+      return true;
+    }
+  }
+}
