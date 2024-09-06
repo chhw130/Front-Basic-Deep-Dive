@@ -236,7 +236,7 @@ describe("assignment 2 > basic : 값을 다루기", () => {
       expect({ ...obj }).toEqual({});
     });
 
-    it.only("forEach > ", () => {
+    it("forEach > ", () => {
       const results = [];
       forEach(obj, (value, key) => results.push({ value, key }));
       expect(results).toStrictEqual([
@@ -284,7 +284,7 @@ describe("assignment 2 > basic : 값을 다루기", () => {
       expect(spansResult).toStrictEqual([spans[1]]);
     });
 
-    it("every > ", () => {
+    it.only("every > ", () => {
       const objectResult = every(obj, (value) => value > 0);
       expect(objectResult).toBe(true);
 
