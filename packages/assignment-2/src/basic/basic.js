@@ -7,7 +7,7 @@ export function shallowEquals(target1, target2) {
 
   if (
     (target1.constructor === Object && target2.constructor === Object) ||
-    (Array.isArray(target1) && Array.isArray(target2))
+    (Array.isLikeArray(target1) && Array.isLikeArray(target2))
   ) {
     return shallowComparisonObj(target1, target2);
   }
@@ -26,7 +26,7 @@ export function deepEquals(target1, target2) {
 
   if (
     (target1.constructor === Object && target2.constructor === Object) ||
-    (Array.isArray(target1) && Array.isArray(target2))
+    (Array.isLikeArray(target1) && Array.isLikeArray(target2))
   ) {
     const keys1 = Object.keys(target1);
     const keys2 = Object.keys(target2);
@@ -97,15 +97,15 @@ export function createUnenumerableObject(target) {
 }
 
 export function forEach(target, callback) {
-  const data = Object.entries(Object.getPrototypeOf(target));
+  const isLikeArray = target instanceof Array || target instanceof NodeList;
 
-  for (let i = 0; i < data.length; i++) {
-    const [a, b] = data[i];
+  const newTarget = isLikeArray ? Array.from(target) : target;
 
-    const key = a;
-    const value = b;
+  for (let key in newTarget) {
+    const numKey = Number(key);
+    const data = isNaN(numKey) ? key : numKey;
 
-    callback(value, key);
+    callback(target[key], data);
   }
 }
 
