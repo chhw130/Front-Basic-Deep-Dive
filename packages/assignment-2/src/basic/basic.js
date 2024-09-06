@@ -131,7 +131,27 @@ export function map(target, callback) {
   }
 }
 
-export function filter(target, callback) {}
+export function filter(target, callback) {
+  const isLikeArray = target instanceof Array || target instanceof NodeList;
+
+  const newTarget = isLikeArray ? Array.from(target) : target;
+
+  const returnData = isLikeArray ? [] : {};
+
+  if (!isLikeArray) {
+    for (let item in newTarget) {
+      if (callback(newTarget[item])) returnData[item] = newTarget[item];
+    }
+    return returnData;
+  }
+
+  if (isLikeArray) {
+    for (let item in newTarget) {
+      if (callback(newTarget[item])) returnData.push(newTarget[item]);
+    }
+    return returnData;
+  }
+}
 
 export function every(target, callback) {}
 
