@@ -109,7 +109,27 @@ export function forEach(target, callback) {
   }
 }
 
-export function map(target, callback) {}
+export function map(target, callback) {
+  const isLikeArray = target instanceof Array || target instanceof NodeList;
+
+  const newTarget = isLikeArray ? Array.from(target) : target;
+
+  const returnData = isLikeArray ? [] : {};
+
+  if (isLikeArray) {
+    for (let item of newTarget) {
+      returnData.push(callback(item));
+    }
+    return returnData;
+  }
+
+  if (!isLikeArray) {
+    for (let item in newTarget) {
+      returnData[item] = callback(newTarget[item]);
+    }
+    return returnData;
+  }
+}
 
 export function filter(target, callback) {}
 
