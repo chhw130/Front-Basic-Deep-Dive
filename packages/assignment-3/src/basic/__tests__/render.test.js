@@ -2,8 +2,8 @@ import { describe, expect, test } from "vitest";
 import { jsx, render } from "../render";
 
 describe("render > ", () => {
-  describe("첫 번째 렌더링 테스트", () => {
-    test.only("한 개의 태그를 렌더링할 수 있다.", () => {
+  describe.only("첫 번째 렌더링 테스트", () => {
+    test("한 개의 태그를 렌더링할 수 있다.", () => {
       const App = jsx("div", null, "div의 children 입니다.");
 
       const $root = document.createElement("div");
@@ -12,7 +12,7 @@ describe("render > ", () => {
       expect($root.innerHTML).toBe(`<div>div의 children 입니다.</div>`);
     });
 
-    test.only("props를 추가할 수 있다.", () => {
+    test("props를 추가할 수 있다.", () => {
       const App = jsx(
         "div",
         { id: "test-id", class: "test-class" },
@@ -27,21 +27,21 @@ describe("render > ", () => {
       );
     });
 
-    // test("자식 노드를 표현할 수 있다.", () => {
-    //   const App = jsx(
-    //     "div",
-    //     { id: "test-id", class: "test-class" },
-    //     jsx("p", null, "첫 번째 문단"),
-    //     jsx("p", null, "두 번째 문단")
-    //   );
+    test("자식 노드를 표현할 수 있다.", () => {
+      const App = jsx(
+        "div",
+        { id: "test-id", class: "test-class" },
+        jsx("p", null, "첫 번째 문단"),
+        jsx("p", null, "두 번째 문단")
+      );
 
-    //   const $root = document.createElement("div");
-    //   render($root, App);
+      const $root = document.createElement("div");
+      render($root, App);
 
-    //   expect($root.innerHTML).toBe(
-    //     `<div id="test-id" class="test-class"><p>첫 번째 문단</p><p>두 번째 문단</p></div>`
-    //   );
-    // });
+      expect($root.innerHTML).toBe(
+        `<div id="test-id" class="test-class"><p>첫 번째 문단</p><p>두 번째 문단</p></div>`
+      );
+    });
   });
 
   describe("리렌더링 테스트 - 변경된 내용만 반영되도록 한다.", () => {
