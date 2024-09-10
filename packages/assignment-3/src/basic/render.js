@@ -8,6 +8,14 @@ export function createElement(node) {
 
   newNode.textContent = children;
 
+  if (props) {
+    const property = Object.entries(props);
+    property.forEach((ele) => {
+      const [key, attribute] = ele;
+      newNode.setAttribute(key, attribute);
+    });
+  }
+
   return newNode;
   // jsx를 dom으로 변환
 }
