@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import { jsx, render } from "../render";
 
 describe("render > ", () => {
-  describe.only("첫 번째 렌더링 테스트", () => {
+  describe("첫 번째 렌더링 테스트", () => {
     test("한 개의 태그를 렌더링할 수 있다.", () => {
       const App = jsx("div", null, "div의 children 입니다.");
 
@@ -86,7 +86,7 @@ describe("render > ", () => {
       expect(children[2]).not.toBe(newChildren[2]);
     });
 
-    test("props 수정", () => {
+    test.only("props 수정", () => {
       const $root = document.createElement("div");
       const App = jsx(
         "div",
