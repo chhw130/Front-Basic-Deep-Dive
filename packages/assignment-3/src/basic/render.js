@@ -107,8 +107,12 @@ export function render(parent, newNode, oldNode, index = 0) {
   // 4. 만약 newNode와 oldNode의 타입이 다르다면
   //   oldNode를 newNode로 교체
   //   종료
+  if (newNode.type !== oldNode.type) {
+    const newElement = createElement(newNode);
+    parent.replaceChild(newElement, parent.children[index]);
+    return;
+  }
   // 5. newNode와 oldNode에 대해 updateAttributes 실행
-
   updateAttributes(parent.children[index], newNode.props, oldNode.props);
 
   // 6. newNode와 oldNode 자식노드들 중 더 긴 길이를 가진 것을 기준으로 반복
