@@ -86,7 +86,7 @@ describe("render > ", () => {
       expect(children[2]).not.toBe(newChildren[2]);
     });
 
-    test.only("props 수정", () => {
+    test("props 수정", () => {
       const $root = document.createElement("div");
       const App = jsx(
         "div",
