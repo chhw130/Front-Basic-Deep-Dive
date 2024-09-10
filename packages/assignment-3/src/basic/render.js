@@ -1,12 +1,12 @@
 export function jsx(type, props, ...children) {
-  return { type, props, children };
+  const childrens = children;
+  return { type, props, childrens };
 }
 
+// jsx를 dom으로 변환
 export function createElement(node) {
-  const { type, props, children } = node;
+  const { type, props, childrens } = node;
   const newNode = document.createElement(type);
-
-  newNode.textContent = children;
 
   if (props) {
     const property = Object.entries(props);
@@ -16,8 +16,17 @@ export function createElement(node) {
     });
   }
 
+  if (childrens && childrens.length > 1) {
+    for (let children of childrens) {
+      const childrenElement = createElement(children);
+
+      newNode.appendChild(childrenElement);
+    }
+  } else if (childrens.length === 1 && typeof childrens[0] === "string") {
+    newNode.textContent = childrens;
+  }
+
   return newNode;
-  // jsx를 dom으로 변환
 }
 
 function updateAttributes(target, newProps, oldProps) {
