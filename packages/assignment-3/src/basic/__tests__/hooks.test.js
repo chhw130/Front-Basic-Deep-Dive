@@ -78,7 +78,7 @@ describe("hooks test", () => {
     });
   });
 
-  describe.only("useMemo", () => {
+  describe("useMemo", () => {
     test("useMemo로 만들어진 값은 캐싱된다.", () => {
       function getMemo() {
         resetContext();
