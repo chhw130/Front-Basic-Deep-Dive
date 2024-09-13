@@ -75,7 +75,6 @@ describe("MyReact > ", () => {
         const $root = document.createElement("div");
         react.render($root, App);
 
-        const beforeChildren = [...$root.querySelectorAll("p")];
         expect($root.innerHTML).toBe(`<div><p>1번째 자식</p></div>`);
 
         fn(2);
