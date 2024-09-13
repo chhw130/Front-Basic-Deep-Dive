@@ -2,9 +2,15 @@ import { createHooks } from "./hooks";
 import { render as updateElement } from "./render";
 
 function MyReact() {
-  const _render = () => {};
+  let currentNode;
+
+  const _render = () => {
+    resetHookContext();
+  };
   function render($root, rootComponent) {
     updateElement($root, rootComponent());
+
+    currentNode = rootComponent();
   }
 
   const {

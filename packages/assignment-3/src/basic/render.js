@@ -28,7 +28,7 @@ export function createElement(node) {
   }
 
   // childrendythrk 여러개라면 재귀로 child요소를 붙여주기
-  if (childrens && childrens.length > 1) {
+  if (childrens && childrens.length >= 1) {
     for (let children of childrens) {
       const childrenElement = createElement(children);
 
