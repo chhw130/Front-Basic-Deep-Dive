@@ -60,8 +60,6 @@ export function createHooks(callback) {
 
     idx++;
 
-    console.log(memoContext.memo, idx);
-
     return newValue;
   };
 
