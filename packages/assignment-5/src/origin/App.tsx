@@ -2,7 +2,8 @@ import { useState } from "react";
 import { CartPage } from "./components/CartPage.tsx";
 import { AdminPage } from "./components/AdminPage.tsx";
 import { Coupon, Product } from "../types.ts";
-import { useProduct } from "./product/hooks/useProduct.ts";
+import { useProduct } from "./feature/product/hooks/useProduct.ts";
+import { useCoupon } from "./feature/coupon/hooks/useCoupon.ts";
 
 const INITIAL_PRODUCTS: Product[] = [
   {
@@ -48,13 +49,9 @@ const INITIAL_COUPONS: Coupon[] = [
 
 const App = () => {
   const { products, addProduct, updateProducts } = useProduct(INITIAL_PRODUCTS);
+  const { coupons, addCoupon } = useCoupon(INITIAL_COUPONS);
 
-  const [coupons, setCoupons] = useState<Coupon[]>(INITIAL_COUPONS);
   const [isAdmin, setIsAdmin] = useState(false);
-
-  const handleCouponAdd = (newCoupon: Coupon) => {
-    setCoupons((prevCoupons) => [...prevCoupons, newCoupon]);
-  };
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -76,7 +73,7 @@ const App = () => {
             coupons={coupons}
             onProductUpdate={updateProducts}
             onProductAdd={addProduct}
-            onCouponAdd={handleCouponAdd}
+            onCouponAdd={addCoupon}
           />
         ) : (
           <CartPage products={products} coupons={coupons} />
