@@ -26,3 +26,5 @@
 [문제 풀어보기](https://github.com/chhw130/Front-Basic-Deep-Dive/tree/main/packages/assignment-4)
 
 [WIKI 링크(궁금증 및 정리)](https://github.com/chhw130/Front-Basic-Deep-Dive/wiki/4%EC%9E%A5-%ED%81%B4%EB%A6%B0%EC%BD%94%EB%93%9C)
+
+## 5.디자인 패턴과 함수형 프로그래밍
