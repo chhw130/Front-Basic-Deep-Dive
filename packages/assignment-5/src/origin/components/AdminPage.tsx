@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Coupon, Discount, Product } from "../../types";
+import { useDisclosure } from "../shared/lib/hooks/useDisclosure";
 
 interface Props {
   products: Product[];
@@ -28,7 +29,13 @@ export const AdminPage = ({
     discountType: "percentage",
     discountValue: 0,
   });
-  const [showNewProductForm, setShowNewProductForm] = useState(false);
+
+  const {
+    isOpen: isOpenProductForm,
+    onCloseHandler: onCloseProductForm,
+    onOpenHandler: onOpenProductForm,
+  } = useDisclosure();
+
   const [newProduct, setNewProduct] = useState<Omit<Product, "id">>({
     name: "",
     price: 0,
@@ -130,7 +137,7 @@ export const AdminPage = ({
       stock: 0,
       discounts: [],
     });
-    setShowNewProductForm(false);
+    onCloseProductForm();
   };
 
   return (
@@ -140,12 +147,14 @@ export const AdminPage = ({
         <div>
           <h2 className="text-2xl font-semibold mb-4">상품 관리</h2>
           <button
-            onClick={() => setShowNewProductForm(!showNewProductForm)}
+            onClick={() => {
+              isOpenProductForm ? onCloseProductForm() : onOpenProductForm();
+            }}
             className="bg-green-500 text-white px-4 py-2 rounded mb-4 hover:bg-green-600"
           >
-            {showNewProductForm ? "취소" : "새 상품 추가"}
+            {isOpenProductForm ? "취소" : "새 상품 추가"}
           </button>
-          {showNewProductForm && (
+          {isOpenProductForm && (
             <div className="bg-white p-4 rounded shadow mb-4">
               <h3 className="text-xl font-semibold mb-2">새 상품 추가</h3>
               <div className="mb-2">
