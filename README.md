@@ -22,3 +22,7 @@
 [WIKI 링크(궁금증 및 정리)](https://github.com/chhw130/Front-Basic-Deep-Dive/wiki/3%EC%9E%A5-React%EA%B5%AC%ED%98%84%ED%95%B4%EB%B3%B4%EA%B8%B0)
 
 ## 4. 클린코드
+
+[문제 풀어보기](https://github.com/chhw130/Front-Basic-Deep-Dive/tree/main/packages/assignment-4)
+
+[WIKI 링크(궁금증 및 정리)](https://github.com/chhw130/Front-Basic-Deep-Dive/wiki/4%EC%9E%A5-%ED%81%B4%EB%A6%B0%EC%BD%94%EB%93%9C)
