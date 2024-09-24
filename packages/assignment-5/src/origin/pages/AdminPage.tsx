@@ -17,31 +17,8 @@ export const AdminPage = ({
   onProductAdd,
   onCouponAdd,
 }: Props) => {
+  // openProduct
   const [openProductIds, setOpenProductIds] = useState<Set<string>>(new Set());
-  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
-  const [newDiscount, setNewDiscount] = useState<Discount>({
-    quantity: 0,
-    rate: 0,
-  });
-  const [newCoupon, setNewCoupon] = useState<Coupon>({
-    name: "",
-    code: "",
-    discountType: "percentage",
-    discountValue: 0,
-  });
-
-  const {
-    isOpen: isOpenProductForm,
-    onCloseHandler: onCloseProductForm,
-    onOpenHandler: onOpenProductForm,
-  } = useDisclosure();
-
-  const [newProduct, setNewProduct] = useState<Omit<Product, "id">>({
-    name: "",
-    price: 0,
-    stock: 0,
-    discounts: [],
-  });
 
   const toggleProductAccordion = (productId: string) => {
     setOpenProductIds((prev) => {
@@ -54,6 +31,9 @@ export const AdminPage = ({
       return newSet;
     });
   };
+
+  // edit product
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 
   // handleEditProduct 함수 수정
   const handleEditProduct = (product: Product) => {
@@ -93,6 +73,12 @@ export const AdminPage = ({
     }
   };
 
+  // discount
+  const [newDiscount, setNewDiscount] = useState<Discount>({
+    quantity: 0,
+    rate: 0,
+  });
+
   const handleAddDiscount = (productId: string) => {
     const updatedProduct = products.find((p) => p.id === productId);
     if (updatedProduct && editingProduct) {
@@ -118,6 +104,14 @@ export const AdminPage = ({
     }
   };
 
+  // coupon
+  const [newCoupon, setNewCoupon] = useState<Coupon>({
+    name: "",
+    code: "",
+    discountType: "percentage",
+    discountValue: 0,
+  });
+
   const handleAddCoupon = () => {
     onCouponAdd(newCoupon);
     setNewCoupon({
@@ -127,6 +121,20 @@ export const AdminPage = ({
       discountValue: 0,
     });
   };
+
+  // newProduct(form)
+  const [newProduct, setNewProduct] = useState<Omit<Product, "id">>({
+    name: "",
+    price: 0,
+    stock: 0,
+    discounts: [],
+  });
+
+  const {
+    isOpen: isOpenProductForm,
+    onCloseHandler: onCloseProductForm,
+    onOpenHandler: onOpenProductForm,
+  } = useDisclosure();
 
   const handleAddNewProduct = () => {
     const productWithId = { ...newProduct, id: Date.now().toString() };
